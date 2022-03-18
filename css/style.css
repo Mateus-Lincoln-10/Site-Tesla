@@ -6,7 +6,6 @@
   box-sizing: border-box;
   outline: none; /* Contorno */
   border: none;
-
   transition: 0.2s linear;
 }
 
@@ -15,26 +14,22 @@ html {
   scroll-behavior: smooth; /*Rolagem de comportamento: suave*/
 }
 
+body {
+  background: url("../img/bg-tesla.PNG");
+}
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 9%;
+  padding: 1rem 9%;
 }
 
-.header .navbar a {
-  font-size: 0.9rem;
-  color: #171a20;
-  margin-left: 2rem;
-  font-family: "Roboto", sans-serif;
-  text-decoration: none;
-}
-
+.header .navbar a,
 .header .others a {
   font-size: 0.9rem;
   color: #171a20;
@@ -43,8 +38,16 @@ html {
   text-decoration: none;
 }
 
+.header .navbar a:hover,
+.header .others a:hover,
+.button-menu:hover {
+  padding: 0.5rem 1rem;
+  background: #0000000d;
+  border-radius: 10px;
+}
+
 .home {
-  padding-top: 8rem;
+  padding-top: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +55,7 @@ html {
 
 .home h1 {
   font-size: 2.5rem;
-  padding: 0rem 1.5rem;
+  padding: 0rem 1rem;
 }
 
 .home p {
@@ -66,8 +69,16 @@ html {
   color: #171a20;
 }
 
-.buttom {
-  padding-top: 20rem;
+.button {
+  padding-top: 18rem;
+}
+
+#angle-down {
+  margin-top: 4rem;
+  font-size: 1.7rem;
+  color: #393c41;
+  cursor: pointer;
+  margin-right: 1.5rem;
 }
 
 .home div .custom {
@@ -85,4 +96,81 @@ html {
   background: rgba(244, 244, 244, 0.9);
   border-radius: 100px;
   font-weight: bold;
+}
+
+#angle {
+  font-size: 1.2rem;
+  margin-left: 10rem;
+}
+
+.header-responsive {
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  background: white;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.header-responsive.active {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  overflow-y: scroll;
+}
+
+.header-responsive .navbar-responsive a,
+.header-responsive .others-responsive a {
+  display: flex;
+  padding: 0.5rem;
+  font-size: 1rem;
+  text-align: right;
+  color: #393c41;
+  margin-bottom: 0.5rem;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+
+#close-menu {
+  font-size: 1.5rem;
+  color: #393c41;
+  cursor: pointer;
+  margin: 1.1rem 1rem 2rem 15rem;
+}
+
+@media (max-width: 1199px) {
+  .header .hide {
+    display: none;
+  }
+
+  .button-menu {
+    padding: 0.5rem 1rem;
+    background: #0000000d;
+    border-radius: 10px;
+  }
+  .home .button {
+    padding-top: 13rem;
+  }
+
+  #angle-down {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .home .button {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding-top: 12rem;
+  }
+
+  .home .button .custom,
+  .home .button .custom .inventory {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  #angle-down {
+    margin-top: 2rem;
+    margin-right: 0rem;
+  }
 }
