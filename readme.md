@@ -8,5 +8,3 @@ Tecnologias utilizadas:
 - HTML
 - CSS
 - JavaScript
-
-Nessa primeira parte, foi feita somente a parte Web do site, sem o background.
