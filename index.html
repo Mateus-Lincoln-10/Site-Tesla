@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <img class="background" src="img/tesla.png">
+  <img class="background" src="img/bg-tesla.PNG">
   <!-- Header starts -->
   <header class="header">
     <img src="img/logo.png" class="header-image">
@@ -30,7 +30,7 @@
 
     <div class="others">
       <a href="#" class="hide">Shop</a>
-      <a href="#" class="hide">Acount</a>
+      <a href="#" class="hide" id="account-btn">Account</a>
       <a href="#" class="button-menu">Menu</a>
     </div>
 
@@ -82,7 +82,25 @@
       </div>
 
     </header>
-    <!-- Header ends  -->
+    <!-- Header responsive ends  -->
+  </section>
+  <section>
+
+    <div class="login-form-container">
+      <i class="fas fa-times" id="form-close"></i>
+
+      <form action="">
+        <h3>login</h3>
+        <input type="email" class="box" placeholder="Digite seu email">
+        <input type="password" class="box" placeholder="Digite sua senha">
+        <input type="submit" value="Entrar" class="btn" id="entrar-form">
+        <input type="checkbox" id="remember">
+        <label for="remember">Lembre-me</label>
+        <p>Esqueceu a senha? <a href="#">Click aqui</a></p>
+        <p>Não tem uma conta? <a href="#">Criar conta</a></p>
+      </form>
+
+    </div>
   </section>
 
   <script src="js/main.js"></script>
