@@ -4,7 +4,7 @@
   position: absolute;
   z-index: -1;
   width: 100%;
-  height: 125vh;
+  height: 100vh;
 }
 * {
   margin: 0;
@@ -143,6 +143,110 @@ html {
   margin: 1.1rem 1rem 2rem 15rem;
 }
 
+/**/
+.login-form-container {
+  position: absolute;
+  top: -140%;
+  left: 0;
+  z-index: 10000;
+  min-height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-container.active {
+  top: 0;
+}
+
+
+.login-form-container form {
+  margin: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  width: 50rem;
+}
+
+.login-form-container form h3 {
+  font-size: 3rem;
+  color: #444;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem 0;
+  color: black;
+}
+
+.login-form-container form .box {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.7rem;
+  color: #333;
+  margin: 0.6rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  text-transform: none;
+}
+
+.login-form-container form .box:focus {
+  border-color: rgb(54, 54, 54);
+}
+
+.login-form-container form #remember {
+  margin: 2rem 0;
+}
+
+.login-form-container form label {
+  font-size: 1.5rem;
+}
+
+.login-form-container form .btn {
+  display: block;
+  width: 100%;
+}
+
+.login-form-container form p {
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.login-form-container form p a {
+  color: #333;
+}
+
+.login-form-container form p a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+#entrar-form {
+  height: 3rem;
+  background: black;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+#entrar-form:hover {
+  background: #333;
+}
+
+.login-form-container #form-close {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  font-size: 4rem;
+  color: black;
+  cursor: pointer;
+}
+
+.login-form-container #form-close:hover {
+  color: gray;
+}
+
+
 @media (max-width: 1199px) {
   .header .hide {
     display: none;
@@ -178,5 +282,13 @@ html {
   #angle-down {
     margin-top: 2rem;
     margin-right: 0rem;
+  }
+
+  .login-form-container form h3 {
+    font-size: 2rem;
+  }
+
+  .login-form-container #form-close {
+    font-size: 3rem;
   }
 }
