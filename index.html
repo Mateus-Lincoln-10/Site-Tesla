@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
-
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Importei a biblioteca AXIOS -->
   <title></title>
 </head>
 
@@ -101,6 +101,19 @@
       </form>
 
     </div>
+  </section>
+
+  <section class="consulta">
+    <input id="input_consultar" type="text" name="automovel" value="" placeholder="Digite a marca do automovel: " />
+    <input type="text" name="" id="posicao" class="posicao" placeholder="Digite a posição: ">
+    <button id="btn_consultar">Consultar</button>
+    <div class="espaco">
+      <p id="paragrafo1"></p>
+      <p id="paragrafo2"></p>
+      <p id="paragrafo3"></p>
+      <p id="paragrafo4"></p>
+    </div>
+
   </section>
 
   <script src="js/main.js"></script>

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@500&family=Righteous&family=Roboto:wght@500&family=Sarala&display=swap");
-
 .background {
   position: absolute;
   z-index: -1;
@@ -17,7 +16,7 @@
 
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth; /*Rolagem de comportamento: suave*/
+  scroll-behavior: smooth; 
 }
 
 .header {
@@ -246,6 +245,46 @@ html {
   color: gray;
 }
 
+.consulta {
+margin-top: 200px; 
+width: 100%;
+max-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center; 
+}
+
+.espaco{
+  margin-left: 5%;
+}
+#input_consultar {
+  width: 20%;
+  padding: 1rem;
+  font-size: 1.0rem;
+  color: #333;
+  margin: 0.6rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  text-transform: none;
+  margin-left: -10%;
+}
+.posicao{
+  width: 15%;
+  padding: 1rem;
+  font-size: 1.0rem;
+  color: #333;
+  margin: 0.6rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  text-transform: none;
+  margin-left: 5%;
+}
+#btn_consultar {
+  width: 100px;
+  height: 50px;
+  background: black;
+  margin-left: 7%; 
+  color: white;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+}
 
 @media (max-width: 1199px) {
   .header .hide {
