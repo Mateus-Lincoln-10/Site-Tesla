@@ -257,6 +257,7 @@ html {
 .consulta{
   display: none;
 }
+
 .consulta.active {
 display: initial;
 align-items: center;
