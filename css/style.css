@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@500&family=Righteous&family=Roboto:wght@500&family=Sarala&display=swap");
-
 .background {
   position: absolute;
   z-index: -1;
@@ -17,9 +16,17 @@
 
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth; /*Rolagem de comportamento: suave*/
+  scroll-behavior: smooth; 
 }
 
+.btn_limpar{
+  width: 100px;
+  height: 50px;
+  background: black;
+  margin-left: 7%; 
+  color: white;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3); 
+}
 .header {
   position: fixed;
   top: 0;
@@ -246,6 +253,73 @@ html {
   color: gray;
 }
 
+/*Consulta*/
+.consulta{
+  display: none;
+}
+.consulta.active {
+display: initial;
+align-items: center;
+justify-content: center; 
+}
+
+.consulta .h1 {
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+.consulta .organizar_consulta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.consulta .organizar_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: inline;
+}
+
+#input_consultar {
+  width: 20%;
+  padding: 1rem;
+  font-size: 1.0rem;
+  color: #333;
+  margin: 0.6rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  text-transform: none;
+  margin-left: 3%;
+}
+.posicao{
+  width: 15%;
+  padding: 1rem;
+  font-size: 1.0rem;
+  color: #333;
+  margin: 0.6rem 0;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  text-transform: none;
+  margin-left: 4%;
+}
+#btn_consultar {
+  width: 100px;
+  height: 50px;
+  background: black;
+  margin-left: 10%;
+  color: white;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+}
+
+.espaco {
+  margin-top: 50px;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: inline;
+  gap: 25px;
+}
+/*Fim consulta*/
 
 @media (max-width: 1199px) {
   .header .hide {

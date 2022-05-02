@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
-
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Importei a biblioteca AXIOS -->
   <title></title>
 </head>
 
@@ -91,8 +91,8 @@
 
       <form action="">
         <h3>login</h3>
-        <input type="email" class="box" placeholder="Digite seu email">
-        <input type="password" class="box" placeholder="Digite sua senha">
+        <input type="email" class="box" placeholder="Digite seu email" id="email">
+        <input type="password" class="box" placeholder="Digite sua senha" id="senha">
         <input type="submit" value="Entrar" class="btn" id="entrar-form">
         <input type="checkbox" id="remember">
         <label for="remember">Lembre-me</label>
@@ -100,6 +100,26 @@
         <p>Não tem uma conta? <a href="#">Criar conta</a></p>
       </form>
 
+    </div>
+  </section>
+
+  <section class="consulta">
+    <div class="organizar_consulta">
+      <h1 class="h1">Consulta de veículo</h1>
+
+      <input id="input_consultar" type="text" name="automovel" value="" placeholder="Digite a marca do automovel: " />
+      <input type="text" name="" id="posicao" class="posicao" placeholder="Digite a posição: ">
+      <div class="organizar_button">
+        <button id="btn_consultar">Consultar</button>
+        <button class="btn_limpar">Limpar</button>
+      </div>
+
+      <div class="espaco">
+        <p id="paragrafo1"></p>
+        <p id="paragrafo2"></p>
+        <p id="paragrafo3"></p>
+        <p id="paragrafo4"></p>
+      </div>
     </div>
   </section>
 
