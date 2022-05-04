@@ -23,23 +23,47 @@ formClose.onclick = () => {
 }
 
 
-abrirConsulta.onclick = (ev) =>{
+
+abrirConsulta.onclick = (ev) =>{ // quando clicar no entrar
   ev.preventDefault();
   var email = document.querySelector("#email").value;
   var senha = document.querySelector("#senha").value;
-  
+  // nas linhas abaixo estou armazenando no localStorage da pagina
+  localStorage.setItem("email",email);
+  localStorage.setItem("senha",senha);
   axios.post('https://reqres.in/api/login', {
     email: email, 
     password: senha
   })
-  .then(function (response) {
+  .then(function (response) { // se deu certo
     consulta.classList.add('active');
     loginForm.classList.remove('active');
   })
-  .catch(function (error) {
+  .catch(function (error) { // se deu errado
     console.log(error);
   });
 }
+if(location.reload){ // se recarregou a pagina
+  axios.post('https://reqres.in/api/login', {
+    email: localStorage.getItem("email"), // passo como parametro o que está armazenado no localStorage
+    password: localStorage.getItem("senha")
+  })
+  .then(function (response) { // se deu certo
+    consulta.classList.add('active');
+    loginForm.classList.remove('active');
+  })
+  .catch(function (error) { // se deu errado
+    console.log(error);
+  });
+}
+
+var btn_deslogar = document.querySelector(".btn_deslogar");
+
+btn_deslogar.addEventListener('click',function(){
+  localStorage.removeItem("email"); // estou apagando do LocalStorage
+  localStorage.removeItem("senha"); // estou apagando do LocalStorage
+  location.reload(); // atualiza a pagina
+});
 
 // Parte de consulta da API de Veiculo
  // nas linhas abaixo estou criando variaveis (let) e atribuindo a elas o que eu estou selecionando, é como se por exemplo
@@ -55,6 +79,10 @@ abrirConsulta.onclick = (ev) =>{
     async function criaElementos(){
       try{
         var query = document.querySelector('#input_consultar').value;
+        if((query.length===0) || (query.length<3)){
+          alert("Erro, o campo deve ter ao menos 3 caracteres !");
+          return;
+        }
         let json = await axios.get("https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/" + query + "?format=json"); // aqui filtra a pesquisa
         var docs = json.data.Results;
         var pos = document.querySelector("#posicao").value;
@@ -99,7 +127,7 @@ abrirConsulta.onclick = (ev) =>{
           quarto.appendChild(span4);          
           quarto.appendChild(Model_Name);
 
-          return 1;// se tudo deu certo
+          
       }catch(error){
       // Validação dos campo de busca
         alert("Erro, os campos de busca de dados da API devem estar preenchidos e com valores válidos !!!");
@@ -136,7 +164,6 @@ abrirConsulta.onclick = (ev) =>{
         
     }
 
-    var contador = 0;
 
     btn_consultar.addEventListener('click',async()=>{
         criaElementos();
