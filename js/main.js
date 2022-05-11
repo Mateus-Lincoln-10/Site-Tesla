@@ -23,11 +23,21 @@ formClose.onclick = () => {
 }
 
 
-
+var contador=0;
 abrirConsulta.onclick = (ev) =>{ // quando clicar no entrar
   ev.preventDefault();
+  contador=contador+1;
   var email = document.querySelector("#email").value;
   var senha = document.querySelector("#senha").value;
+  if(contador===1){ // primeira vez que clicou no botao
+    if((email.length<=2) || (senha.length<=2)){
+      var mensagemErro = document.createElement('div');
+      mensagemErro.innerHTML = "Os campos de email e senha não podem ter menos de 3 caracteres !";
+      document.querySelector("#lugarErro").appendChild(mensagemErro); // coloco a mensagem de erro dentro da div LugarErro
+      return;
+    }
+  }
+ 
   // nas linhas abaixo estou armazenando no localStorage da pagina
   localStorage.setItem("email",email);
   localStorage.setItem("senha",senha);
@@ -77,10 +87,14 @@ btn_deslogar.addEventListener('click',function(){
     var quarto = document.querySelector("#paragrafo4");
 
     async function criaElementos(){
+
       try{
         var query = document.querySelector('#input_consultar').value;
         if((query.length===0) || (query.length<3)){
-          alert("Erro, o campo deve ter ao menos 3 caracteres !");
+          var mErro = document.createElement('div');
+          mErro.setAttribute("id","mErro");
+          mErro.innerHTML = "Insira uma marca válida ! Clique no campo da marca para tal !";
+          document.querySelector("#MensErro").appendChild(mErro); 
           return;
         }
         let json = await axios.get("https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/" + query + "?format=json"); // aqui filtra a pesquisa
@@ -130,7 +144,11 @@ btn_deslogar.addEventListener('click',function(){
           
       }catch(error){
       // Validação dos campo de busca
-        alert("Erro, os campos de busca de dados da API devem estar preenchidos e com valores válidos !!!");
+      var mErroExc = document.createElement('div');
+      mErroExc.setAttribute("id","mErroExc");
+      mErroExc.innerHTML = "Insira um numero válido! Clique no campo de posição para tal!";
+      document.querySelector("#MensErro").appendChild(mErroExc); 
+
       }
       
     }
@@ -161,9 +179,9 @@ btn_deslogar.addEventListener('click',function(){
           var sp2 = document.querySelector("#paragrafo4 #Model_Name");
           par4.removeChild(sp1);
           par4.removeChild(sp2);
+          
         
     }
-
 
     btn_consultar.addEventListener('click',async()=>{
         criaElementos();
@@ -175,4 +193,18 @@ btn_deslogar.addEventListener('click',function(){
       removeElementos();
       document.querySelector('#input_consultar').value=""; // deixo em branco
       document.querySelector('#posicao').value="";
+    });
+
+    // Os códigos abaixo servem para remover os avisos da exceção (posicao) 
+    // e do nome da marca, basta clicar no campo que deu o erro 
+
+
+    document.querySelector("#input_consultar").addEventListener('click',function(){ // quando clicar no input do nome da marca
+      var mErro1 = document.querySelector("#mErro");
+      document.querySelector("#MensErro").removeChild(mErro1);
+    });
+
+    document.querySelector("#posicao").addEventListener('click',function(){ // quando clicar no input da posição
+      var mErro2 = document.querySelector("#mErroExc");
+      document.querySelector("#MensErro").removeChild(mErro2);
     });

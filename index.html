@@ -93,6 +93,7 @@
         <h3>login</h3>
         <input type="email" class="box" placeholder="Digite seu email" id="email">
         <input type="password" class="box" placeholder="Digite sua senha" id="senha">
+        <div id="lugarErro"></div>
         <input type="submit" value="Entrar" class="btn" id="entrar-form">
         <input type="checkbox" id="remember">
         <label for="remember">Lembre-me</label>
@@ -106,13 +107,15 @@
   <section class="consulta">
     <div class="organizar_consulta">
       <h1 class="h1">Consulta de veículo</h1>
-
+      <h1 class="marca">Marca:</h1>
       <input id="input_consultar" type="text" name="automovel" value="" placeholder="Digite a marca do automovel: " />
+      <h2 class="pos">Posição:</h2>
       <input type="text" name="" id="posicao" class="posicao" placeholder="Digite a posição: ">
       <div class="organizar_button">
         <button id="btn_consultar">Consultar</button>
         <button class="btn_limpar">Limpar</button>
         <button class="btn_deslogar">Deslogar</button>
+        <p id="MensErro" class=".mensagemErro"></p>
       </div>
 
       <div class="espaco">

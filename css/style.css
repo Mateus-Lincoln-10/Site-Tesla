@@ -5,6 +5,21 @@
   width: 100%;
   height: 100vh;
 }
+
+.mensagemErro{
+  margin-right: 10px;
+  color: #171a20;
+}
+
+.marca{
+  margin-left: -30%;
+  margin-top: 30px;
+}
+
+.pos{
+  margin-left: -30%;
+  margin-top: 40px;
+}
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +41,7 @@ html {
   margin-left: 7%; 
   color: white;
   border: 0.1rem solid rgba(0, 0, 0, 0.3); 
+  margin-top: 10px;
 }
 
 .btn_deslogar{
@@ -35,6 +51,7 @@ html {
   margin-left: 7%; 
   color: white;
   border: 0.1rem solid rgba(0, 0, 0, 0.3); 
+  margin-top: 10px;
 }
 
 .header {
@@ -302,16 +319,18 @@ justify-content: center;
   border: 0.1rem solid rgba(0, 0, 0, 0.3);
   text-transform: none;
   margin-left: 3%;
+  margin-top: -30px;
 }
 .posicao{
-  width: 15%;
+  width: 20%;
   padding: 1rem;
   font-size: 1.0rem;
   color: #333;
   margin: 0.6rem 0;
   border: 0.1rem solid rgba(0, 0, 0, 0.3);
   text-transform: none;
-  margin-left: 4%;
+  margin-left: 3%;
+  margin-top: -30px;
 }
 #btn_consultar {
   width: 100px;
@@ -320,6 +339,7 @@ justify-content: center;
   margin-left: 10%;
   color: white;
   border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
 }
 
 .espaco {
