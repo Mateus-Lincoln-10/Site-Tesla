@@ -91,8 +91,9 @@ btn_deslogar.addEventListener('click',function(){
       try{
         var query = document.querySelector('#input_consultar').value;
         if((query.length===0) || (query.length<3)){
-          var mErro = document.createElement('div');
+          var mErro = document.createElement('p');
           mErro.setAttribute("id","mErro");
+          mErro.setAttribute("class","mErro");
           mErro.innerHTML = "Insira uma marca válida ! Clique no campo da marca para tal !";
           document.querySelector("#MensErro").appendChild(mErro); 
           return;
@@ -144,8 +145,9 @@ btn_deslogar.addEventListener('click',function(){
           
       }catch(error){
       // Validação dos campo de busca
-      var mErroExc = document.createElement('div');
+      var mErroExc = document.createElement('p');
       mErroExc.setAttribute("id","mErroExc");
+      mErroExc.setAttribute("class","mErroExc");
       mErroExc.innerHTML = "Insira um numero válido! Clique no campo de posição para tal!";
       document.querySelector("#MensErro").appendChild(mErroExc); 
 
@@ -190,9 +192,9 @@ btn_deslogar.addEventListener('click',function(){
     var btn_limpar = document.querySelector(".btn_limpar");
     
     btn_limpar.addEventListener('click',function(){
-      removeElementos();
       document.querySelector('#input_consultar').value=""; // deixo em branco
       document.querySelector('#posicao').value="";
+      removeElementos();
     });
 
     // Os códigos abaixo servem para remover os avisos da exceção (posicao) 
