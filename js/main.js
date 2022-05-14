@@ -149,7 +149,7 @@ btn_deslogar.addEventListener('click',function(){
       mErroExc.setAttribute("id","mErroExc");
       mErroExc.setAttribute("class","mErroExc");
       mErroExc.innerHTML = "Insira um numero válido! Clique no campo de posição para tal!";
-      document.querySelector("#MensErro").appendChild(mErroExc); 
+      document.querySelector("#MensErroPos").appendChild(mErroExc); 
 
       }
       
@@ -208,5 +208,5 @@ btn_deslogar.addEventListener('click',function(){
 
     document.querySelector("#posicao").addEventListener('click',function(){ // quando clicar no input da posição
       var mErro2 = document.querySelector("#mErroExc");
-      document.querySelector("#MensErro").removeChild(mErro2);
+      document.querySelector("#MensErroPos").removeChild(mErro2);
     });
