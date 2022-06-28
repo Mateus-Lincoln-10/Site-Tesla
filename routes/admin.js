@@ -5,6 +5,8 @@
     const Veiculo = mongoose.model('veiculo'); // estou usando o model Veiculo
     require('../models/postagem'); // peguei o model Veiculo
     const Postagem = mongoose.model('postagem'); // estou usando o model Veiculo
+    const {eAdmin} = require('../helpers/eAdmin');
+
 
 
     // Rota que lista cadastro de veiculos e manda para o formulario de cadastro de veiculo
@@ -16,12 +18,12 @@
     });
 
     // Rota que leva para o formulario de cadastro de veiculo
-    router.get('/cad/add',(req,res)=>{
+    router.get('/cad/add',eAdmin,(req,res)=>{
         res.render('admin/cadVeiculo');
     });
 
     // Rota que faz o cadastro de veiculo
-    router.post('/cad/add',(req,res)=>{
+    router.post('/cad/add',eAdmin, (req,res)=>{
         var erros = []; // declarei um array vazio
 
         // Validações do formulario
@@ -58,7 +60,7 @@
     });
 
     // Rota que seta para os campos nos formularios para editar os dados do veiculo
-    router.get('/cad/edit/:id',(req,res)=>{
+    router.get('/cad/edit/:id',eAdmin,(req,res)=>{
         Veiculo.findOne({_id:req.params.id}).lean().then((veiculo)=>{// pesquisa o registro de veiculo onde o id é o que foi passado
             res.render('admin/editVeiculo',{veiculo:veiculo});
         }).catch((err)=>{
@@ -68,7 +70,7 @@
     });
 
     // Rota que edita veiculo
-    router.post('/cad/edit',(req,res)=>{
+    router.post('/cad/edit',eAdmin, (req,res)=>{
         Veiculo.findOne({_id: req.body.id}).then((veiculo)=>{  // pesquisa um veiculo pelo id
             veiculo.nome = req.body.nome; // o campo nome recebe o valor que eu digitar no input
             veiculo.marca = req.body.marca;
@@ -88,7 +90,7 @@
     
     // Rota que deleta veiculo
 
-    router.post('/cad/del',(req,res)=>{
+    router.post('/cad/del',eAdmin,(req,res)=>{
         Veiculo.deleteOne({_id: req.body.id}).then(()=>{ // remove o veiculo pelo id
             req.flash('success_msg','Veiculo deletado com sucesso !');
             res.redirect('/admin/cad');
@@ -110,7 +112,7 @@
     });
 
     // Rota que manda para a pagina de cadastro de postagens
-    router.get('/postagem/add',(req,res)=>{
+    router.get('/postagem/add',eAdmin,(req,res)=>{
         Veiculo.find().lean().then((veiculo)=>{
             res.render('admin/cadPostagem', {veiculo: veiculo});
         }).catch((err)=>{
@@ -121,7 +123,7 @@
     });
     
     // Rota que cadastra postagem de veiculo
-    router.post('/postagem/nova',(req,res)=>{
+    router.post('/postagem/nova',eAdmin, (req,res)=>{
         var erros = [];
 
          // Validações do formulario
@@ -162,6 +164,53 @@
         }    
     });
 
-    
+    // Rota que seta para os campos nos formularios para editar os dados da postagem
+    router.get('/postagem/edit/:id',eAdmin,(req,res)=>{
+        Postagem.findOne({_id:req.params.id}).lean().then((postagem)=>{
+            Veiculo.find().lean().then((veiculo)=>{
+                res.render('admin/editPostagem',{veiculo: veiculo, postagem: postagem});
+            }).catch((err)=>{
+                req.flash('error_msg','Houve um erro ao listar os veiculos !');
+                res.redirect('/admin/postagem');
+            });
+        }).catch((err)=>{
+            req.flash('error_msg','Houve um erro ao carregar o formulário de edição !');
+            res.redirect('/admin/postagem');
+        }); 
+        
+    });
+
+    // Rota que edita postagem
+    router.post('/postagem/edit',eAdmin, (req,res)=>{
+        Postagem.findOne({_id: req.body.id}).then((postagem)=>{  // pesquisa uma postagem pelo id
+            postagem.anoFabricacao = req.body.anoFabricacao; // o campo recebe o valor que eu digitar no input
+            postagem.cor = req.body.cor; 
+            postagem.preco = req.body.preco; 
+            postagem.descricao = req.body.descricao; 
+            postagem.veiculo = req.body.veiculo; 
+
+            postagem.save().then(()=>{
+                req.flash('success_msg','Postagem editada com sucesso !');
+                res.redirect('/admin/postagem');
+            }).catch((err)=>{
+                req.flash('error_msg','Houve um erro interno ao salvar a edição da postagem !');
+                res.redirect('/admin/postagem');
+            });
+        }).catch((err) =>{
+            req.flash('error_msg','Houve um erro ao editar a postagem !');
+            res.redirect('/admin/postagem');
+        });
+    });
+
+    //Rota que deleta postagem
+    router.post('/postagem/del',eAdmin,(req,res)=>{
+        Postagem.deleteOne({_id: req.body.id}).then(()=>{ // remove o veiculo pelo id
+            req.flash('success_msg','Postagem deletada com sucesso !');
+            res.redirect('/admin/postagem');
+        }).catch((err)=>{
+            req.flash('error_msg','Houve um erro ao deletar a postagem !');
+            res.redirect('/admin/postagem');
+        }); 
+    });
 
     module.exports = router;

@@ -6,8 +6,16 @@ const mongoose = require('mongoose'); // para usar o MongoDB
 const app = express(); 
 const path = require('path'); // serve para trabalhar com diretorios, manipular pastas
 const admin = require('./routes/admin'); // para usar rotas
+const usuarios = require('./routes/usuario'); 
 const session = require('express-session');
 const flash = require('connect-flash');
+
+
+
+// Faz autenticação do usuario
+const passport = require('passport');
+require('./config/auth')(passport);
+
 
 
 //Configurações
@@ -17,6 +25,9 @@ const flash = require('connect-flash');
         resave: true,
         saveUninitialized: true
     }));
+    // Passport
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     //Flash
     app.use(flash());
@@ -24,6 +35,8 @@ const flash = require('connect-flash');
     app.use((req,res,next)=>{
         res.locals.success_msg = req.flash("success_msg"); // serve para criar variaveis globais
         res.locals.error_msg = req.flash("error_msg"); // serve para criar variaveis globais
+        res.locals.error = req.flash("error");
+        res.locals.user = req.user || null; // armazena os dados do usuario autenticado
         next(); // Manda continuar para outras requisições, se não ele para aqui e não sai
     });
 
@@ -53,6 +66,7 @@ const flash = require('connect-flash');
 
     app.use('/admin',admin); // /admin é o prefixo das rotas que estão no admin.js (grupo de rotas)
     // se eu criar rotas aqui elas nao tem prefixo
+    app.use('/usuarios',usuarios);
 
 //Outros
 const PORT = 8081; // minha porta escolhida
